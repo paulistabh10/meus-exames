@@ -1,439 +1,234 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Resumo dos Exames — Anderson</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Plano rápido - Anderson (até 26/10/2025)</title>
   <style>
-    :root{
-      --bg:#f6f8fa;
-      --card:#ffffff;
-      --text:#0f1720;
-      --muted:#6b7280;
-      --green:#e6ffed;
-      --green-border:#2bb673;
-      --amber:#fff5e6;
-      --amber-border:#ff9f1c;
-      --red:#ffe6e6;
-      --red-border:#e02424;
-      --accent:#0b5ed7;
-      --shadow: 0 6px 18px rgba(15,23,32,0.08);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-    }
-    body{
-      margin:0;
-      background:var(--bg);
-      color:var(--text);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      padding:28px;
-    }
-    .container{
-      max-width:1100px;
-      margin:0 auto;
-    }
-    header{
-      display:flex;
-      gap:16px;
-      align-items:center;
-      margin-bottom:18px;
-    }
-    .title{
-      font-size:20px;
-      font-weight:700;
-    }
-    .subtitle{
-      color:var(--muted);
-      font-size:13px;
-    }
-    .card{
-      background:var(--card);
-      border-radius:12px;
-      padding:18px;
-      box-shadow:var(--shadow);
-      border:1px solid rgba(15,23,32,0.04);
-    }
-    .controls{
-      margin-top:12px;
-      display:flex;
-      gap:8px;
-      flex-wrap:wrap;
-    }
-    button{
-      border:0;
-      background:var(--accent);
-      color:white;
-      padding:8px 12px;
-      border-radius:8px;
-      cursor:pointer;
-      font-weight:600;
-      font-size:13px;
-    }
-    button.secondary{
-      background:transparent;
-      color:var(--accent);
-      border:1px solid rgba(11,94,215,0.12);
-    }
-    .legend{
-      display:flex;
-      gap:12px;
-      align-items:center;
-      margin-top:12px;
-      flex-wrap:wrap;
-    }
-    .legend span{
-      display:inline-flex;
-      gap:8px;
-      align-items:center;
-      color:var(--muted);
-      font-size:13px;
-    }
-    .swatch{
-      width:14px;height:14px;border-radius:4px;border:1px solid rgba(0,0,0,0.06);
-    }
-
-    table{
-      width:100%;
-      border-collapse:collapse;
-      margin-top:18px;
-      font-size:14px;
-    }
-    thead th{
-      text-align:left;
-      padding:12px;
-      border-bottom:1px solid rgba(15,23,32,0.06);
-      color:var(--muted);
-      font-weight:700;
-      font-size:13px;
-    }
-    tbody td{
-      padding:12px;
-      border-bottom:1px solid rgba(15,23,32,0.04);
-      vertical-align:middle;
-    }
-    tbody tr:last-child td{ border-bottom:0; }
-
-    /* highlight rows */
-    .ok{ background:linear-gradient(90deg,var(--green) 0%, rgba(230,255,237,0.6) 100%); border-left:4px solid var(--green-border); }
-    .attention{ background:linear-gradient(90deg,var(--amber) 0%, rgba(255,245,230,0.6) 100%); border-left:4px solid var(--amber-border); }
-    .bad{ background:linear-gradient(90deg,var(--red) 0%, rgba(255,230,230,0.6) 100%); border-left:4px solid var(--red-border); }
-
-    .small{ font-size:12px; color:var(--muted); }
-    @media (max-width:880px){
-      thead{ display:none; }
-      table, tbody, tr, td{ display:block; width:100%; }
-      tr{ margin-bottom:12px; border-radius:10px; overflow:hidden; }
-      td{ padding:10px 12px; }
-      td::before{
-        content:attr(data-label);
-        display:block;
-        font-weight:700;
-        margin-bottom:6px;
-        color:var(--muted);
-        font-size:12px;
-      }
-    }
-    .note{
-      margin-top:14px;
-      color:var(--muted);
-      font-size:13px;
-    }
+    :root{--bg:#f7fafc;--card:#ffffff;--accent:#0b72b9;--muted:#6b7280}
+    body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; background:var(--bg); color:#111; margin:0; padding:24px}
+    .container{max-width:900px;margin:0 auto}
+    header{display:flex;align-items:center;gap:16px;margin-bottom:18px}
+    h1{font-size:20px;margin:0}
+    p.lead{margin:0;color:var(--muted)}
+    .card{background:var(--card);border-radius:12px;padding:18px;box-shadow:0 6px 18px rgba(12,23,36,0.06);margin-bottom:16px}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    ul{margin:8px 0 0 18px}
+    .check{display:flex;align-items:center;gap:10px}
+    .btn{display:inline-block;padding:8px 12px;border-radius:8px;background:var(--accent);color:#fff;text-decoration:none}
+    footer{color:var(--muted);font-size:13px;margin-top:18px}
+    @media (max-width:720px){.grid{grid-template-columns:1fr}}
+    .timeline{margin:8px 0;padding-left:14px;border-left:3px solid #e6eef8}
+    .timeline div{margin:8px 0;padding-left:12px}
+    .important{color:#b32d00;font-weight:600}
+    .small{font-size:13px;color:var(--muted)}
+    .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:#eef6ff;color:var(--accent);font-weight:600}
+    .two-col{display:flex;gap:12px}
+    .two-col > div{flex:1}
+    .center{display:flex;gap:8px;align-items:center}
+    nav{margin-bottom:18px}
+    nav a{margin-right:12px;color:var(--accent);text-decoration:none;font-weight:600}
+    nav a:hover{text-decoration:underline}
   </style>
 </head>
 <body>
   <div class="container">
     <header>
+      <div class="pill">Plano até 26/10/2025</div>
       <div>
-        <div class="title">Resumo dos Exames — Anderson José</div>
-        <div class="subtitle">Exames coletados em 11/09/2025 — visão resumida e colorida para rápida leitura</div>
+        <h1>Plano prático — Corrigir Vitamina D, B12 e reforçar hemograma</h1>
+        <p class="lead">Resumo e checklist para levar ao médico na consulta de 26/10/2025.</p>
       </div>
     </header>
 
-    <div class="card" role="region" aria-label="Resumo dos exames">
-      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+    <nav>
+      <a href="#plano">Plano de cuidados</a>
+      <a href="#exames">Resultados originais</a>
+    </nav>
+
+    <main id="plano">
+      <section class="card">
+        <h2>Resumo dos pontos principais</h2>
+        <ul>
+          <li>Vitamina D: <strong>18 ng/mL (deficiência)</strong></li>
+          <li>Vitamina B12: <strong>238 pg/mL (limítrofe)</strong></li>
+          <li>Eritrócitos: discretamente baixos (4,31 x10<sup>6</sup>/mm³), sem anemia franca</li>
+        </ul>
+        <p class="small">Objetivo curto prazo: iniciar medidas não farmacológicas e coletar material para consulta. Objetivo após consulta: seguir orientação médica (suplementação e novas dosagens se necessário).</p>
+      </section>
+
+      <section class="card grid">
         <div>
-          <strong>Visão rápida</strong>
-          <div class="small">Normal (verde) / Atenção (laranja) / Alerta (vermelho)</div>
+          <h3>Vitamina D — ações imediatas</h3>
+          <ul>
+            <li>Exposição solar: <strong>15–20 min</strong>, 3–4x/semana, braços e pernas expostos. Preferir antes das 10h ou após 16h.</li>
+            <li>Alimentos: peixes gordos (sardinha, salmão, atum), ovos inteiros, leite e iogurtes fortificados.</li>
+            <li>Anotar sinais: fadiga, dor muscular. Levar ao médico.</li>
+          </ul>
         </div>
-
-        <div class="controls" aria-hidden="false">
-          <button onclick="window.print()">Imprimir</button>
-          <button class="secondary" id="downloadCsv">Baixar CSV</button>
+        <div>
+          <h3>Vitamina B12 — ações imediatas</h3>
+          <ul>
+            <li>Consumir diariamente proteína animal: carnes magras, ovos, leite e queijos.</li>
+            <li>Se for vegetariano/vegan, dizer isso ao médico — pode ser necessária injeção/suplemento.</li>
+            <li>Evitar bebidas alcoólicas em excesso até a consulta.</li>
+          </ul>
         </div>
+      </section>
+
+      <section class="card">
+        <h3>Hemograma / Ferro — recomendações</h3>
+        <ul>
+          <li>Aumentar fontes de ferro heme: carne vermelha magra e fígado (1–2x/semana).</li>
+          <li>Leguminosas: feijão, lentilha, grão-de-bico — consumir com fonte de vitamina C (suco de laranja, acerola) para melhor absorção.</li>
+          <li>Evitar café/chá preto imediatamente após as refeições (reduz absorção).</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h3>Plano de 5 semanas (linha do tempo até 26/10/2025)</h3>
+        <div class="timeline">
+          <div><strong>Semana 1 (20/09 — 26/09)</strong>: começar exposição solar 3x/sem; aumentar peixes/ovos; incluir suco de laranja 1x ao dia.</div>
+          <div><strong>Semana 2 (27/09 — 03/10)</strong>: manter rotina solar; priorizar carne magra 3x/sem; reduzir café após refeições.</div>
+          <div><strong>Semana 3 (04/10 — 10/10)</strong>: rever sintomas; preparar lista de perguntas para médico; anotar medicamentos e suplementação atual.</div>
+          <div><strong>Semana 4 (11/10 — 17/10)</strong>: intensificar fontes de vitamina D na dieta (peixes 3x/sem); garantir sono adequado (7–8 h).</div>
+          <div><strong>Semana 5 (18/10 — 25/10)</strong>: última revisão: conferir jejum (se necessário) para exames de retorno; levar calendário alimentar e registros de exposição ao sol.</div>
+        </div>
+      </section>
+
+      <section class="card two-col">
+        <div>
+          <h3>Checklist para levar ao médico (26/10/2025)</h3>
+          <ul>
+            <li>Resultado dos exames anteriores (impresso ou digital).</li>
+            <li>Lista de sintomas recentes (cansaço, dores, alterações).</li>
+            <li>Lista de medicamentos e suplementação em uso.</li>
+            <li>Registro de exposição solar e alimentação das últimas 4 semanas.</li>
+          </ul>
+          <p class="small"><strong>Perguntas úteis para o médico:</strong></p>
+          <ul>
+            <li>É necessário iniciar suplementação de vitamina D agora? Qual dose?</li>
+            <li>Recomenda suplementação oral ou injeção para B12?</li>
+            <li>Preciso repetir exames antes de iniciar suplementos?</li>
+            <li>Precisa de investigação adicional para eritropenia (ex.: ferro sérico, ferritina)?</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Notas rápidas</h3>
+          <ul>
+            <li class="small">Se estiver em uso de anticoagulantes, anticoagulação ou tiver doença crônica, informe ao médico antes de iniciar qualquer suplemento.</li>
+            <li class="small">Anote qualquer sintoma novo (fraqueza, formigamento, dor) e leve na consulta.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="card">
+        <h3>Cardápio sugerido (1 semana) — foco: Vitamina D, B12 e ferro</h3>
+        <p class="small">Opções simples. Ajuste por porção e preferências. Evite repetição excessiva se tiver restrições.</p>
+        <div class="grid">
+          <div>
+            <strong>Segunda</strong>
+            <ul>
+              <li>Café: 1 fatia de pão integral, ovo cozido.</li>
+              <li>Almoço: arroz, feijão, bife magro, salada com rúcula e laranja.</li>
+              <li>Lanche: iogurte natural fortificado.</li>
+              <li>Jantar: sardinha grelhada, batata assada e brócolis.</li>
+            </ul>
+          </div>
+          <div>
+            <strong>Terça</strong>
+            <ul>
+              <li>Café: tapioca com queijo e café (evitar após refeições ricas em ferro).</li>
+              <li>Almoço: salmão ou atum, quinoa, salada de espinafre com tomate.</li>
+              <li>Lanche: fruta cítrica (laranja/acerola).</li>
+              <li>Jantar: omelete com espinafre e cogumelos.</li>
+            </ul>
+          </div>
+          <div>
+            <strong>Quarta</strong>
+            <ul>
+              <li>Café: pão integral, queijo branco, 1 ovo mexido.</li>
+              <li>Almoço: frango grelhado, lentilha, salada verde.</li>
+              <li>Lanche: castanhas (pequena porção).</li>
+              <li>Jantar: filé de peixe, purê de abóbora.</li>
+            </ul>
+          </div>
+          <div>
+            <strong>Quinta</strong>
+            <ul>
+              <li>Café: mingau de aveia com ovo cozido picado.</li>
+              <li>Almoço: bife de fígado (1 vez na semana) ou bife magro, arroz integral, salada com laranja.</li>
+              <li>Lanche: iogurte fortificado.</li>
+              <li>Jantar: salada de atum com feijão-fradinho.</li>
+            </ul>
+          </div>
+          <div>
+            <strong>Sexta</strong>
+            <ul>
+              <li>Café: ovo pochê, torrada integral.</li>
+              <li>Almoço: peixe grelhado, espinafre refogado, batata doce.</li>
+              <li>Lanche: frutas cítricas.</li>
+              <li>Jantar: sopa de legumes com pedaços de frango.</li>
+            </ul>
+          </div>
+          <div>
+            <strong>Sábado</strong>
+            <ul>
+              <li>Café: tapioca com ovo e queijo.</li>
+              <li>Almoço: churrasco moderado (carne magra), salada, farofa leve.</li>
+              <li>Lanche: iogurte com frutas.</li>
+              <li>Jantar: omelete com queijo e ervas.</li>
+            </ul>
+          </div>
+          <div>
+            <strong>Domingo</strong>
+            <ul>
+              <li>Café: ovos mexidos, suco de laranja.</li>
+              <li>Almoço: peixe ou frango, feijão, salada com agrião.</li>
+              <li>Lanche: castanhas ou nozes.</li>
+              <li>Jantar: refeição leve (salada + proteína).</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h3>Registro diário (modelo rápido)</h3>
+        <p class="small">Copie/cole este bloco em um app de notas para registrar:</p>
+        <ul>
+          <li>Data: ______</li>
+          <li>Exposição solar: sim/não — minutos: __</li>
+          <li>Alimentos ricos em vitamina D (peixe/ovo/lácteos): descreva</li>
+          <li>Alimentos ricos em ferro consumidos: descreva</li>
+          <li>Suplementos/medicamentos: descreva</li>
+          <li>Sintomas: cansaço, dor, formigamento: descreva</li>
+        </ul>
+      </section>
+    </main>
+
+    <section id="exames" class="card">
+      <h2>Resultados originais dos exames (Setembro/2025)</h2>
+      <ul>
+        <li><strong>Hemograma:</strong> Hemácias 4,31 (limítrofe baixo); Hemoglobina, Hematócrito e Plaquetas normais; Leucócitos normais.</li>
+        <li><strong>Glicemia de jejum:</strong> 85 mg/dL (normal).</li>
+        <li><strong>Hemoglobina glicada (HbA1c):</strong> 5,4% (normal, sem sinais de diabetes).</li>
+        <li><strong>Função renal:</strong> Ureia 25 mg/dL; Creatinina 0,90 mg/dL; eTFG >90 (normais).</li>
+        <li><strong>Perfil lipídico:</strong> Colesterol total 157; HDL 56; LDL 82; Triglicérides 93 (todos normais).</li>
+        <li><strong>Função hepática/pancreática:</strong> AST/TGO, ALT/TGP, GGT, Fosfatase alcalina, Amilase e Lipase normais.</li>
+        <li><strong>Exames infecciosos:</strong> Sífilis, Hepatite B e C — Não reagentes.</li>
+        <li><strong>Tireoide:</strong> TSH 0,92; T4 livre 1,21 (normais).</li>
+        <li><strong>Próstata:</strong> PSA total 0,39; PSA livre normal.</li>
+        <li><strong>Vitaminas:</strong> Vitamina B12: 238 pg/mL (limítrofe baixo); Vitamina D: 18 ng/mL (deficiência).</li>
+        <li><strong>Urina I:</strong> Normal, sem sinais de infecção.</li>
+      </ul>
+    </section>
+
+    <footer class="card">
+      <div class="center">
+        <div class="small">Documento gerado automaticamente por ChatGPT — Plano pessoal para Anderson.</div>
       </div>
-
-      <div class="legend" aria-hidden="false">
-        <span><span class="swatch" style="background:var(--green)"></span>Normal</span>
-        <span><span class="swatch" style="background:var(--amber)"></span>Atenção</span>
-        <span><span class="swatch" style="background:var(--red)"></span>Alerta</span>
-      </div>
-
-      <table aria-describedby="table-desc">
-        <thead>
-          <tr>
-            <th>Exame</th>
-            <th>Resultado</th>
-            <th>Referência</th>
-            <th>Observação</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="attention">
-            <td data-label="Exame">Eritrócitos</td>
-            <td data-label="Resultado">4,31 (↓)</td>
-            <td data-label="Referência">4,5 – 5,5</td>
-            <td data-label="Observação">Ligeiramente baixo</td>
-          </tr>
-
-          <tr class="ok">
-            <td data-label="Exame">Hemoglobina</td>
-            <td data-label="Resultado">14,1</td>
-            <td data-label="Referência">13 – 17</td>
-            <td data-label="Observação">Normal</td>
-          </tr>
-
-          <tr class="ok">
-            <td data-label="Exame">Hematócrito</td>
-            <td data-label="Resultado">43,2</td>
-            <td data-label="Referência">40 – 50</td>
-            <td data-label="Observação">Normal</td>
-          </tr>
-
-          <tr class="ok">
-            <td data-label="Exame">Leucócitos</td>
-            <td data-label="Resultado">7,24</td>
-            <td data-label="Referência">4,5 – 11</td>
-            <td data-label="Observação">Normal</td>
-          </tr>
-
-          <tr class="ok">
-            <td data-label="Exame">Plaquetas</td>
-            <td data-label="Resultado">252</td>
-            <td data-label="Referência">150 – 400</td>
-            <td data-label="Observação">Normal</td>
-          </tr>
-
-          <tr class="ok">
-            <td data-label="Exame">Glicose jejum</td>
-            <td data-label="Resultado">85 mg/dL</td>
-            <td data-label="Referência">70 – 99</td>
-            <td data-label="Observação">Normal</td>
-          </tr>
-
-          <tr class="ok">
-            <td data-label="Exame">Hemoglobina glicada (A1C)</td>
-            <td data-label="Resultado">5,4%</td>
-            <td data-label="Referência">&lt;5,7%</td>
-            <td data-label="Observação">Normal</td>
-          </tr>
-
-          <tr class="ok">
-            <td data-label="Exame">Ureia</td>
-            <td data-label="Resultado">25 mg/dL</td>
-            <td data-label="Referência">19 – 49</td>
-            <td data-label="Observação">Normal</td>
-          </tr>
-
-          <tr class="ok">
-            <td data-label="Exame">Creatinina</td>
-            <td data-label="Resultado">0,90 mg/dL</td>
-            <td data-label="Referência">0,7 – 1,3</td>
-            <td data-label="Observação">Normal</td>
-          </tr>
-
-          <tr class="ok">
-            <td data-label="Exame">TFG</td>
-            <td data-label="Resultado">&gt;90 mL/min/1,73m²</td>
-            <td data-label="Referência">≥90</td>
-            <td data-label="Observação">Função renal preservada</td>
-          </tr>
-
-          <tr class="ok">
-            <td data-label="Exame">Colesterol Total</td>
-            <td data-label="Resultado">157 mg/dL</td>
-            <td data-label="Referência">&lt;190</td>
-            <td data-label="Observação">Ótimo</td>
-          </tr>
-
-          <tr class="ok">
-            <td data-label="Exame">HDL (bom)</td>
-            <td data-label="Resultado">56 mg/dL</td>
-            <td data-label="Referência">&gt;40</td>
-            <td data-label="Observação">Bom</td>
-          </tr>
-
-          <tr class="ok">
-            <td data-label="Exame">LDL (ruim)</td>
-            <td data-label="Resultado">82 mg/dL</td>
-            <td data-label="Referência">&lt;130</td>
-            <td data-label="Observação">Bom</td>
-          </tr>
-
-          <tr class="ok">
-            <td data-label="Exame">Triglicérides</td>
-            <td data-label="Resultado">93 mg/dL</td>
-            <td data-label="Referência">&lt;150</td>
-            <td data-label="Observação">Normal</td>
-          </tr>
-
-          <tr class="ok">
-            <td data-label="Exame">TGO (AST)</td>
-            <td data-label="Resultado">13 U/L</td>
-            <td data-label="Referência">&lt;34</td>
-            <td data-label="Observação">Normal</td>
-          </tr>
-
-          <tr class="ok">
-            <td data-label="Exame">TGP (ALT)</td>
-            <td data-label="Resultado">12 U/L</td>
-            <td data-label="Referência">10 – 49</td>
-            <td data-label="Observação">Normal</td>
-          </tr>
-
-          <tr class="ok">
-            <td data-label="Exame">GGT</td>
-            <td data-label="Resultado">35 U/L</td>
-            <td data-label="Referência">&lt;73</td>
-            <td data-label="Observação">Normal</td>
-          </tr>
-
-          <tr class="ok">
-            <td data-label="Exame">Fosfatase Alcalina</td>
-            <td data-label="Resultado">45 U/L</td>
-            <td data-label="Referência">46 – 116</td>
-            <td data-label="Observação">No limite inferior (ainda normal)</td>
-          </tr>
-
-          <tr class="ok">
-            <td data-label="Exame">Sífilis</td>
-            <td data-label="Resultado">Não reagente</td>
-            <td data-label="Referência">Não reagente</td>
-            <td data-label="Observação">Negativo</td>
-          </tr>
-
-          <tr class="ok">
-            <td data-label="Exame">Hepatite B (HBsAg)</td>
-            <td data-label="Resultado">Não reagente</td>
-            <td data-label="Referência">Não reagente</td>
-            <td data-label="Observação">Negativo</td>
-          </tr>
-
-          <tr class="attention">
-            <td data-label="Exame">Anti-HBs</td>
-            <td data-label="Resultado">&lt;2 UI/L</td>
-            <td data-label="Referência">≥10 UI/L</td>
-            <td data-label="Observação">Sem imunidade → avaliar vacinação</td>
-          </tr>
-
-          <tr class="ok">
-            <td data-label="Exame">Hepatite C (Anti-HCV)</td>
-            <td data-label="Resultado">Não reagente</td>
-            <td data-label="Referência">Não reagente</td>
-            <td data-label="Observação">Negativo</td>
-          </tr>
-
-          <tr class="ok">
-            <td data-label="Exame">TSH</td>
-            <td data-label="Resultado">0,92 uIU/mL</td>
-            <td data-label="Referência">0,49 – 5,58</td>
-            <td data-label="Observação">Normal</td>
-          </tr>
-
-          <tr class="ok">
-            <td data-label="Exame">T4 Livre</td>
-            <td data-label="Resultado">1,21 ng/dL</td>
-            <td data-label="Referência">0,89 – 1,53</td>
-            <td data-label="Observação">Normal</td>
-          </tr>
-
-          <tr class="ok">
-            <td data-label="Exame">PSA Total</td>
-            <td data-label="Resultado">0,39 ng/mL</td>
-            <td data-label="Referência">&lt;2,5 (≤60 anos)</td>
-            <td data-label="Observação">Normal</td>
-          </tr>
-
-          <tr class="attention">
-            <td data-label="Exame">Vitamina B12</td>
-            <td data-label="Resultado">238 pg/mL</td>
-            <td data-label="Referência">211 – 911</td>
-            <td data-label="Observação">No limite inferior</td>
-          </tr>
-
-          <tr class="attention">
-            <td data-label="Exame">Vitamina D (25-OH)</td>
-            <td data-label="Resultado">18 ng/mL</td>
-            <td data-label="Referência">20 – 60</td>
-            <td data-label="Observação">Deficiência → precisa repor</td>
-          </tr>
-
-          <tr class="ok">
-            <td data-label="Exame">Urina I</td>
-            <td data-label="Resultado">Normal</td>
-            <td data-label="Referência">Normal</td>
-            <td data-label="Observação">Sem alterações</td>
-          </tr>
-
-        </tbody>
-      </table>
-
-      <p id="table-desc" class="note">
-        Observação: este resumo é informativo e não substitui avaliação médica. Para condutas (reposição de vitamina D, esquema vacinal de hepatite B, ou
-        investigação de eritropoiese), procure seu médico.
-      </p>
-    </div>
+      <div style="margin-top:8px" class="small">Leve este plano na consulta do dia <strong>26/10/2025</strong> e mostre ao médico os registros diários.</div>
+    </footer>
   </div>
-
-  <script>
-    // Dados para download CSV
-    const rows = [
-      ["Exame","Resultado","Referência","Observação"],
-      ["Eritrócitos","4,31 (↓)","4,5 – 5,5","Ligeiramente baixo"],
-      ["Hemoglobina","14,1","13 – 17","Normal"],
-      ["Hematócrito","43,2","40 – 50","Normal"],
-      ["Leucócitos","7,24","4,5 – 11","Normal"],
-      ["Plaquetas","252","150 – 400","Normal"],
-      ["Glicose jejum","85 mg/dL","70 – 99","Normal"],
-      ["Hemoglobina glicada (A1C)","5,4%","<5,7%","Normal"],
-      ["Ureia","25 mg/dL","19 – 49","Normal"],
-      ["Creatinina","0,90 mg/dL","0,7 – 1,3","Normal"],
-      ["TFG",">90 mL/min/1,73m²","≥90","Função renal preservada"],
-      ["Colesterol Total","157 mg/dL","<190","Ótimo"],
-      ["HDL (bom)","56 mg/dL",">40","Bom"],
-      ["LDL (ruim)","82 mg/dL","<130","Bom"],
-      ["Triglicérides","93 mg/dL","<150","Normal"],
-      ["TGO (AST)","13 U/L","<34","Normal"],
-      ["TGP (ALT)","12 U/L","10 – 49","Normal"],
-      ["GGT","35 U/L","<73","Normal"],
-      ["Fosfatase Alcalina","45 U/L","46 – 116","No limite inferior (ainda normal)"],
-      ["Sífilis","Não reagente","Não reagente","Negativo"],
-      ["Hepatite B (HBsAg)","Não reagente","Não reagente","Negativo"],
-      ["Anti-HBs","<2 UI/L","≥10 UI/L","Sem imunidade → avaliar vacinação"],
-      ["Hepatite C (Anti-HCV)","Não reagente","Não reagente","Negativo"],
-      ["TSH","0,92 uIU/mL","0,49 – 5,58","Normal"],
-      ["T4 Livre","1,21 ng/dL","0,89 – 1,53","Normal"],
-      ["PSA Total","0,39 ng/mL","<2,5 (≤60 anos)","Normal"],
-      ["Vitamina B12","238 pg/mL","211 – 911","No limite inferior"],
-      ["Vitamina D (25-OH)","18 ng/mL","20 – 60","Deficiência → precisa repor"],
-      ["Urina I","Normal","Normal","Sem alterações"]
-    ];
-
-    function makeCsv(rows){
-      return rows.map(r => r.map(cell => `"${String(cell).replace(/"/g,'""')}"`).join(",")).join("\n");
-    }
-
-    document.getElementById("downloadCsv").addEventListener("click", function(){
-      const csv = makeCsv(rows);
-      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = "resumo_exames_anderson.csv";
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-    });
-  </script>
 </body>
 </html>
